@@ -1,0 +1,5 @@
+version=4
+opts=\
+dversionmangle=auto,\
+filenamemangle=s/.*?(\d[\d\.-]*@ARCHIVE_EXT@)/node-lazystream-$1/ \
+ https://github.com/jpommerening/node-lazystream/tags .*/archive/.*/v?([\d\.]+).tar.gz

@@ -1,0 +1,22 @@
+Description: Use stream
+ Use stream instead of readable-stream
+--- a/lib/lazystream.js
++++ b/lib/lazystream.js
+@@ -1,5 +1,5 @@
+ var util = require('util');
+-var PassThrough = require('readable-stream/passthrough');
++var PassThrough = require('stream').PassThrough;
+ 
+ module.exports = {
+   Readable: Readable,
+--- a/test/helper.js
++++ b/test/helper.js
+@@ -1,6 +1,6 @@
+ 
+-var _Readable = require('readable-stream/readable');
+-var _Writable = require('readable-stream/writable');
++var _Readable = require('stream').Readable;
++var _Writable = require('stream').Writable;
+ var util = require('util');
+ 
+ module.exports = {

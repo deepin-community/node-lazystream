@@ -1,0 +1,36 @@
+Description: replace Buffer() by Buffer.from()
+Author: Xavier Guimard <yadd@debian.org>
+Forwarded: no
+Last-Update: 2020-03-01
+
+--- a/test/helper.js
++++ b/test/helper.js
+@@ -18,7 +18,7 @@
+ 
+ DummyReadable.prototype._read = function _read(n) {
+   if (this.strings.length) {
+-    this.push(new Buffer(this.strings.shift()));
++    this.push(new Buffer.from(this.strings.shift()));
+   } else {
+     this.push(null);
+   }
+--- a/test/writable_test.js
++++ b/test/writable_test.js
+@@ -28,7 +28,7 @@
+     var dummy = new DummyWritable(actual);
+ 
+     expected.forEach(function(item) {
+-      dummy.write(new Buffer(item));
++      dummy.write(new Buffer.from(item));
+     });
+     test.done();
+   },
+@@ -52,7 +52,7 @@
+     });
+ 
+     expected.forEach(function(item) {
+-      writable.write(new Buffer(item));
++      writable.write(new Buffer.from(item));
+     });
+     writable.end();
+   }
